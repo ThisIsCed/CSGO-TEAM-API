@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Pos_Projekt"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <BitmapImage x:Key="AppIcon" UriSource="icon.ico"/>
     </Application.Resources>
 </Application>
