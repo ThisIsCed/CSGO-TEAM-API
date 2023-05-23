@@ -80,7 +80,7 @@ Das Diagramm, das unterbei dargestellt ist, dient zur Veranschaung der Requests.
 ```mermaid
 sequenceDiagram
 WPF->> API: Sends reqeust
-API->>DB: Pulls Data
+API->> DB: Pulls Data
 DB ->> API: Sends all Teams
 API -->> WPF: Returns Status
 API ->> WPF: Return Data
