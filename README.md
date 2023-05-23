@@ -84,3 +84,10 @@ Web App->> API: Get reqeust all teams
 API->>DB: Pulls all Teams
 DB ->> API: Sends all Teams
 API ->> Web App: Sends all teams 
+```
+###	Entwicklungsverlauf
+```mermaid
+flowchart LR
+API --> Database[(Database)]
+--> Postman --> WPF --> Web 
+```
