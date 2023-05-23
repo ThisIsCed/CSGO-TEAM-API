@@ -23,8 +23,13 @@ public class TeamController {
     }
 
     @RequestMapping("/teams")
-    public List<Team> allTeams(){
-        return teamService.getAllTeams();
+    public ResponseEntity<List<Team>> allTeams() {
+        List<Team> teams = teamService.getAllTeams();
+        if (teams.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(teams);
+        }
     }
 
     @RequestMapping("/team/{id}")
