@@ -1,5 +1,4 @@
-
-# CS:GO-Teamviewer
+# CS:GO-Team-API
 
 Als Pos-Projekt habe ich einen "Teamviewer" für [CS:GO](https://www.counter-strike.net/news)-Teams entwickelt. Mit diesem Programm können Teams erstellt, bearbeitet, gelöscht und angezeigt werden. Jedes Team hat die gleichen Attribute. Für die technische Umsetzung habe ich [Spring Boot](https://spring.io/projects/spring-boot) für die API gewählt, da wir bereits in DBI damit gearbeitet haben. Für den Webclient nutze ich [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor), während die Verwendung einer WPF-App vorgegeben war. Um die Daten persistent zu speichern, habe ich mich für [MongoDB](https://www.mongodb.com/) entschieden. Für die Umsetzung habe ich folgende Programme genutzt:
 
