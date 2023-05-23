@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "345bae9f-3ba0-4039-b5f3-22901ad0829a",
+		"name": "HTTP-Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25603679"
+	},
+	"item": [
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:25052/",
+					"host": [
+						"localhost"
+					],
+					"port": "25052",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Teams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/teams",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/team/e2779998-14c8-4672-afa7-e15465072164",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"team",
+						"e2779998-14c8-4672-afa7-e15465072164"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Team",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"G2 Esports\",\r\n        \"location\": \"Germany\",\r\n        \"region\": \"Europe\",\r\n        \"founders\": [\r\n            \"ocelote\",\r\n            \"Jens Hilgers\",\r\n            \"Alban Dechelotte\"\r\n        ],\r\n        \"players\": [\r\n            \"huNter-\",\r\n            \"NiKo\",\r\n            \"m0NESY\",\r\n            \"jks\",\r\n            \"HooXi\"\r\n        ],\r\n        \"url\": \"https://cdn.shopify.com/s/files/1/0548/8554/8183/files/G2-Esports-2020-Logo_87bf0678-e67f-4834-8b09-e56137ffaa80.png?v=1641913940\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8888/add/team",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"add",
+						"team"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Copenhagen Flames\",\r\n        \"location\": \"Denmark\",\r\n        \"region\": \"Europe\",\r\n        \"founders\": [\r\n            \"Steffen Thomsen\"\r\n        ],\r\n        \"players\": [\r\n            \"birdfromsky\",\r\n            \"raalz\",\r\n            \"TMB\",\r\n            \"b0RUP\",\r\n            \"farlig\"\r\n        ],\r\n\"url\": \"https://d1pzotwf6uuj6w.cloudfront.net/publications/upload/publication-4354/00001/copenhagen%20flames.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8888/team/646481d318ecae36136aec4c",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"team",
+						"646481d318ecae36136aec4c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete USER",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/del/team/7032ed04-62af-4fb4-90f3-f34f205f415e",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"del",
+						"team",
+						"7032ed04-62af-4fb4-90f3-f34f205f415e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
