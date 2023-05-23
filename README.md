@@ -80,14 +80,19 @@ UML Diagramme wurden mit [Mermaid](https://mermaidjs.github.io/) erstellt.
 Das Diagramm, das unterbei dargestellt ist, dient zur Veranschaung der Requests.
 ```mermaid
 sequenceDiagram
-Web App->> API: Get reqeust all teams
-API->>DB: Pulls all Teams
+WPF->> API: Sends reqeust
+API->>DB: Pulls Data
 DB ->> API: Sends all Teams
-API ->> Web App: Sends all teams 
+API -->> WPF: Returns Status
+API ->> WPF: Return Data
 ```
 ###	Entwicklungsverlauf
 ```mermaid
 flowchart LR
-API --> Database[(Database)]
---> Postman --> WPF --> Web 
+API:::apiclass --> Database[(Database)]:::dbclass--> Postman:::postman --> WPF:::wpfclass --> Web:::webclass
+classDef apiclass fill:#3993DD
+classDef dbclass fill:#97BFE3
+classDef postman fill:#F4EBE8
+classDef wpfclass fill:#8FE9DB
+classDef webclass fill:#29E7CD
 ```
