@@ -63,6 +63,17 @@ Die WPF-App besteht aus einer Klasse namens Teams.cs und einer XAML-Datei namens
 ##	Web App
 Die Web-App wurde mit dem Framework Blazor entwickelt, das von Microsoft stammt. In meinem Blazor-Projekt gibt es auch wieder eine "Team.cs"-Datei mit den gleichen Eigenschaften wie in der WPF-App. Außerdem gibt es zwei Seiten, "TeamDetails.razor" und "Teams.razor". Die "Teams.razor"-Seite ist auch meine Standardseite, das bedeutet, dass sie beim Starten des Projekts im Browser angezeigt wird. Die "TeamDetails.razor"-Seite dient dazu, dass ich beim Klicken auf ein Team weitergeleitet werde und dort die genauen Details des Teams anzeigen kann. Außerdem kann ich dort mein Team löschen, wenn ich dies möchte.
 
+##	Postman
+Postman habe ich genutzt um die funktionalität der API zu testen, als ich noch keine WPF-App bzw. Web-App hatte.
+| Reqeust | Url |Bedingung | Return | Status |
+|---------|-----|-----------|--------|-------|
+|GET|localhost:25052/|keine|The service is running| OK|
+|GET|localhost:8888/teams|keine|Alle Teams|keinen|
+|GET|localhost:8888/team/{id}|Eine Id|Team mit der Id|OK/Not Found|
+|POST|localhost:8888/add/team|Befüllter Body|Team Created/Fehler|Created/Internal Server Error|
+|PUT|localhost:8888/team/{id}|Befüllter Body|Team ... updated/Team not found|Ok/Not Found|
+|DEL|localhost:8888/del/team/{id}|Eine Id|Team deleted/Team not found|OK/Not Found|
+
 ## UML diagrams
 
 UML Diagramme wurden mit [Mermaid](https://mermaidjs.github.io/) erstellt. 
