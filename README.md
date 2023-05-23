@@ -86,6 +86,7 @@ API -->> WPF: Returns Status
 API ->> WPF: Return Data
 ```
 ###	Entwicklungsverlauf
+In der Entwicklung habe ich mit der API begonnen, da diese als Grundstein für das Projekt fungiert. Danach habe ich mit MongoDB Compass eine neue Collection angelegt und in meiner application.propperties habe ich den Pfad zur Collection hinzugefügt, damit die API dort die Daten persistent speichert. Nach dem Anlegen der DB habe ich mit Postman die API auf Herz und Nieren durch geprüft. Daraufhin habe ich mich an die WPF-Application gemacht und zum Schluss die Web-App.
 ```mermaid
 flowchart LR
 API:::apiclass --> Database[(Database)]:::dbclass--> Postman:::postman --> WPF:::wpfclass --> Web:::webclass
