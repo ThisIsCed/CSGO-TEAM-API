@@ -4,34 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="CS:GO-TeamViewer"  WindowState="Maximized">
+        Title="CS:GO-Team-API"  WindowState="Maximized">
 
     <Window.Resources>
         <Style x:Key="SelectedTabItemStyle" TargetType="TabItem">
-            <Setter Property="Background" Value="#DAD2BC" />
-            <Setter Property="Foreground" Value="#252323"/>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#F5F1ED" />
-                </Trigger>
-            </Style.Triggers>
+            <Setter Property="Background" Value="#B3B5BD" />
+            <Setter Property="Foreground" Value="#0D090A"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="15"/>
         </Style>
         <DataTemplate x:Key="CenteredCellTemplate">
             <TextBlock TextAlignment="Center" Text="{Binding}" Margin="2.5"/>
         </DataTemplate>
-
-        <DataTemplate x:Key="CenteredItemsControlCellTemplate">
-            <ItemsControl ItemsSource="{Binding}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock TextAlignment="Center" Text="{Binding}" Margin="2.5"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </DataTemplate>
     </Window.Resources>
-    
-    <TabControl Background="#F5F1ED">
+
+    <TabControl Background="#B3B5BD">
         <TabItem Header="Teams" Style="{StaticResource SelectedTabItemStyle}">
             <StackPanel>
                 <Grid Height="40">
@@ -43,10 +30,10 @@
                         <RowDefinition Height="60"/>
                         <RowDefinition Height="60"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="GetAllTeams" Click="GetTeams"  Grid.Column="0" Grid.Row="0" Height="35" Background="#B3B5BD" Margin="10,0,10,20">Get All</Button>
-                    <Button Click="GetByID" Grid.Column="1" Grid.Row="0" Height="35" Background="#B3B5BD" Margin="10,0,10,20">Get By ID</Button>
+                    <Button x:Name="GetAllTeams" Click="GetTeams"  Grid.Column="0" Grid.Row="0" Height="35" Background="#912F56" Foreground="#EAF2EF" Margin="10,0,10,20">Get All</Button>
+                    <Button x:Name="GetByButton" Click="GetByButton_Click" Grid.Column="1" Grid.Row="0" Height="35" Background="#912F56" Foreground="#EAF2EF" Margin="10,0,10,20">Get by Name</Button>
                 </Grid>
-                <TextBox x:Name="EnterId" Width="745" HorizontalAlignment="Right" VerticalAlignment="Center" Height="20" Margin="10,0,10,10"/>
+                <TextBox x:Name="Enterd" Width="745" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" FontSize="15" Margin="10,0,10,10"/>
 
                 <ListView x:Name="MyListView" Visibility="Collapsed" ItemsSource="{Binding Teams}">
                     <ListView.View>
@@ -61,7 +48,7 @@
                                         <ItemsControl ItemsSource="{Binding founders}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding}" TextAlignment="Center" Margin="2.5"/>
+                                                    <TextBlock Text="{Binding}" TextAlignment="Left" Margin="2.5"/>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
@@ -74,7 +61,7 @@
                                         <ItemsControl ItemsSource="{Binding players}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding}" TextAlignment="Center" Margin="2.5"/>
+                                                    <TextBlock Text="{Binding}" TextAlignment="Left" Margin="2.5"/>
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
@@ -84,6 +71,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Label x:Name="serverStatus1" HorizontalAlignment="Left" VerticalAlignment="Bottom">Server is</Label>
             </StackPanel>
         </TabItem>
 
@@ -95,22 +83,23 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Margin="2.5">
-                    <Label Content="Name" HorizontalAlignment="Center" Width="70"/>
-                    <Label Content="Location" HorizontalAlignment="Center" Width="70"/>
-                    <Label Content="Region" HorizontalAlignment="Center" Width="70"/>
-                    <Label Content="Founders/CEO (,)" HorizontalAlignment="Center" Width="100"/>
-                    <Label Content="Players (,)" HorizontalAlignment="Center" Width="70"/>
-                    <Label Content="Logo (Url)" HorizontalAlignment="Center" Width="70"/>
+                    <Label Content="Name" HorizontalAlignment="Left" Width="80" Height="38"/>
+                    <Label Content="Location" HorizontalAlignment="Left" Width="80" Height="38"/>
+                    <Label Content="Region" HorizontalAlignment="Left" Width="80" Height="38"/>
+                    <Label Content="Founders/CEO (,)" HorizontalAlignment="Left" Width="110" Height="38"/>
+                    <Label Content="Players (,)" HorizontalAlignment="Left" Width="80" Height="38"/>
+                    <Label Content="Logo (Url)" HorizontalAlignment="Left" Width="80" Height="38"/>
+                    <Label x:Name="serverStatus2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom">Server is</Label>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Margin="3.75">
-                    <TextBox Name="MyName" Height="20" Margin="3.75"/>
-                    <TextBox Name="MyLocation" Height="20" Margin="3.75"/>
-                    <TextBox Name="MyRegion" Height="20" Margin="3.75"/>
-                    <TextBox Name="MyFounders" Height="20" Margin="3.75"/>
-                    <TextBox Name="MyPlayers" Height="20" Margin="3.75"/>
-                    <TextBox Name="MyUrl" Height="20" Margin="3.75"/>
-                    <Button Click="AddTeam" Content="Add Team" Height="35" Background="#B3B5BD" Margin="20,10,10,20"/>
+                    <TextBox Name="MyName" Height="30" Margin="3.75"  FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyLocation" Height="30" Margin="3.75" FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyRegion" Height="30" Margin="3.75"  FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyFounders" Height="30" Margin="3.75" FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyPlayers" Height="30" Margin="3.75" FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyUrl" Height="30" Margin="3.75" FontSize="15" TextAlignment="Left"/>
+                    <Button Click="AddTeam" Content="Add Team" Height="40" Background="#912F56" Foreground="#EAF2EF" Margin="20,10,10,20"/>
                 </StackPanel>
             </Grid>
         </TabItem>
@@ -122,25 +111,26 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Margin="2.5">
-                    <Label Content="Id" HorizontalAlignment="Center" Width="70"/>
-                    <Label Content="Name" HorizontalAlignment="Center" Width="70"/>
-                    <Label Content="Location" HorizontalAlignment="Center" Width="70"/>
-                    <Label Content="Region" HorizontalAlignment="Center" Width="70"/>
-                    <Label Content="Founders/CEO (,)" HorizontalAlignment="Center" Width="100"/>
-                    <Label Content="Players (,)" HorizontalAlignment="Center" Width="70"/>
-                    <Label Content="Logo (Url)" HorizontalAlignment="Center" Width="70"/>
+                <StackPanel Grid.Column="0" Margin="3.5">
+                    <Label Content="Id" HorizontalAlignment="Left" Width="75" Height="40" />
+                    <Label Content="Name" HorizontalAlignment="Left" Width="75"  Height="40"/>
+                    <Label Content="Location" HorizontalAlignment="Left" Width="75"  Height="38"/>
+                    <Label Content="Region" HorizontalAlignment="Left" Width="75"  Height="38"/>
+                    <Label Content="Founders/CEO (,)" HorizontalAlignment="Left" Width="110"  Height="35"/>
+                    <Label Content="Players (,)" HorizontalAlignment="Left" Width="75"  Height="40"/>
+                    <Label Content="Logo (Url)" HorizontalAlignment="Left" Width="75"  Height="35"/>
+                    <Label x:Name="serverStatus3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom">Server is</Label>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Margin="3.75">
-                    <TextBox Name="IdU" Margin="3.75"/>
-                    <TextBox Name="MyNameU" Margin="3.75"/>
-                    <TextBox Name="MyLocationU" Margin="3.75"/>
-                    <TextBox Name="MyRegionU" Margin="3.75"/>
-                    <TextBox Name="MyFoundersU" Margin="3.75"/>
-                    <TextBox Name="MyPlayersU" Margin="3.75"/>
-                    <TextBox Name="MyUrlU" Margin="3.75"/>
-                    <Button Click="UpdateTeam" Content="Update Team" Height="35" Background="#B3B5BD" Margin="20,10,10,20"/>
+                    <TextBox Name="IdU" Margin="3.75" Height="30" FontSize="15"  TextAlignment="Left"/>
+                    <TextBox Name="MyNameU" Margin="3.75" Height="30" FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyLocationU" Margin="3.75" Height="30" FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyRegionU" Margin="3.75" Height="30" FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyFoundersU" Margin="3.75" Height="30" FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyPlayersU" Margin="3.75" Height="30" FontSize="15" TextAlignment="Left"/>
+                    <TextBox Name="MyUrlU" Margin="3.75" Height="30" FontSize="15" TextAlignment="Left"/>
+                    <Button Click="UpdateTeam" Content="Update Team" Height="40" Background="#912F56" Foreground="#EAF2EF" Margin="20,10,10,20"/>
                 </StackPanel>
             </Grid>
         </TabItem>
@@ -153,15 +143,15 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Margin="2.5">
-                    <Label Content="Team Id" HorizontalAlignment="Center" Width="70"/>
+                    <Label Content="Team Name" HorizontalAlignment="Left" Width="100" Height="30" FontSize="15"/>
+                    <Label x:Name="serverStatus4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0">Server is</Label>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Margin="3.75">
-                    <TextBox x:Name="DeleteTeamId" Margin="3.75"/>
-                    <Button Click="DeleteTeam" Content="Delete Team" Height="35" Background="#B3B5BD" Margin="20,10,10,20"/>
+                    <TextBox x:Name="DeleteTeamName" Margin="3.75" Height="30" FontSize="15" VerticalAlignment="Center" TextAlignment="Left"/>
+                    <Button Click="DeleteTeam" Content="Delete Team" Height="40" Background="#912F56" Foreground="#EAF2EF" Margin="20,10,10,20"/>
                 </StackPanel>
             </Grid>
         </TabItem>
-
     </TabControl>
 </Window>

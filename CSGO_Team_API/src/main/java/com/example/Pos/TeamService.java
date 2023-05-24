@@ -16,11 +16,13 @@ public class TeamService {
         return repository.findAll();
     }
 
-    public Optional<Team> getTeam(String id){return this.repository.findById(id);}
+    public Optional<Team> getTeamName(String name) {
+        return this.repository.findByName(name);
+    }
 
     public void saveTeam(Team team){
         this.repository.save(team);
     }
 
-    public void deleteTeam(String id){this.repository.deleteById(id);}
+    public void deleteTeam(String name){this.repository.deleteById(name);}
 }

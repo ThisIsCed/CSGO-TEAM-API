@@ -6,23 +6,38 @@ using System.Net.Http.Json;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Windows.Controls;
+using System.Timers;
+using System.Threading;
+using System.Windows.Threading;
+using System;
 
 namespace Pos_Projekt
 {
     public partial class MainWindow : Window
     {
         public HttpClient client = new HttpClient();
+        private DispatcherTimer timer;
+        public string apiUrl = "http://localhost:8888/";
 
         public MainWindow()
         {
             InitializeComponent();
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5); 
+            timer.Tick += TimerTick;
+            timer.Start();
         }
 
-        private async void GetByID(object sender, RoutedEventArgs e)
+        private async void GetByButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EnterId != null)
+            if (Enterd.Text != null)
             {
-                var response = await client.GetAsync($"http://localhost:8888/team/{EnterId.Text}");
+              
+                apiUrl = apiUrl+"team/" + Enterd.Text;
+                
+                var response = await client.GetAsync(apiUrl);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -35,12 +50,48 @@ namespace Pos_Projekt
                         MyListView.Visibility = Visibility.Visible;
                     }
                 }
+                else if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    Enterd.Text = string.Empty;
+                    MessageBox.Show("Team not found.");
+                }
+                else if(Enterd.Text == null || response.StatusCode == null)
+                {
+                    MessageBox.Show("A server error has occurred");
+                }
             }
+        }
+
+        private async void TimerTick(object sender, EventArgs e)
+        {
+            using (var client = new WebClient())
+            {
+                try
+                {
+                    await client.DownloadStringTaskAsync(apiUrl);
+                    UpdateServerStatus("Server is up");
+                }
+                catch (WebException)
+                {
+                    UpdateServerStatus("Server is down");
+                }
+            }
+        }
+
+        private void UpdateServerStatus(string status)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                serverStatus1.Content = status;
+                serverStatus2.Content = status;
+                serverStatus3.Content = status;
+                serverStatus4.Content = status;
+            });
         }
 
         private async void GetTeams(object sender, RoutedEventArgs e)
         {
-        var repsons = await client.GetAsync("http://localhost:8888/teams");
+        var repsons = await client.GetAsync(apiUrl + "teams");
         if (repsons.IsSuccessStatusCode)
         {
             var json = await repsons.Content.ReadAsStringAsync();
@@ -67,7 +118,7 @@ namespace Pos_Projekt
             };
 
             var client = new HttpClient();
-            var response = await client.PostAsJsonAsync("http://localhost:8888/add/team", newTeam);
+            var response = await client.PostAsJsonAsync(apiUrl+"add/team", newTeam);
 
             if (response.IsSuccessStatusCode)
             {
@@ -104,7 +155,7 @@ namespace Pos_Projekt
 
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PutAsync($"http://localhost:8888/team/{id}", content);
+            HttpResponseMessage response = await client.PutAsync(apiUrl+$"team/{name}", content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -123,7 +174,7 @@ namespace Pos_Projekt
         private async void DeleteTeam(object sender, RoutedEventArgs e)
         {
             var client = new HttpClient();
-            var url = $"http://localhost:8888/del/team/{DeleteTeamId.Text}";
+            var url = apiUrl+"del/team/"+DeleteTeamName.Text;
 
             var response = await client.DeleteAsync(url);
 
