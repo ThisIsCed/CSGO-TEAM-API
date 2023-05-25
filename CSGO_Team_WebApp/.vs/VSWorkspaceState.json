@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\CSGO_Team_WepApp",
-    "\\CSGO_Team_WepApp\\Pages"
+    ""
   ],
-  "SelectedNode": "\\CSGO_Team_WepApp\\Pages\\TeamDetail.razor",
+  "SelectedNode": "\\WebApp",
   "PreviewInSolutionExplorer": false
 }
