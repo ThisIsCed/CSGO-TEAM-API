@@ -1,0 +1,75 @@
+﻿@page "/teamdetail/{teamId}"
+
+<h2>Team Details</h2>
+@if (team != null)
+{
+    <div>
+        <h2>@team.name</h2>
+        <div class="team-details">
+            <div class="team-attributes">
+                <p>Id: @team.id</p>
+                <p>Location: @team.location</p>
+                <p>Region: @team.region</p>
+                <p>Founders/CEO: @string.Join(", ", team.founders)</p>
+                <p>Players: @string.Join(", ", team.players)</p>
+            </div>
+            <div class="team-logo">
+                <img src="@team.url" alt="Team Logo" width="100" height="100" />
+            </div>
+        </div>
+    </div>
+    <button @onclick="DeleteTeam">Delete Team</button>
+}
+else
+{
+    <p>Loading team details...</p>
+}
+
+
+@code {
+    [Parameter]
+    public string TeamId { get; set; }
+
+    private Team team;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await httpClient.GetAsync($"http://localhost:8888/team/{TeamId}");
+            if (response.IsSuccessStatusCode)
+            {
+                team = await response.Content.ReadFromJsonAsync<Team>();
+            }
+            else
+            {
+                team = null;
+                Console.WriteLine("An error occurred while retrieving team details. Status Code: " + response.StatusCode);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An error occurred while retrieving team details: " + ex.Message);
+            team = null;
+        }
+    }
+
+    private async Task DeleteTeam()
+    {
+        var client = new HttpClient();
+        var url = $"http://localhost:8888/del/team/{team.id}";
+
+        var response = await client.DeleteAsync(url);
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Team deleted.");
+            NavigationManager.NavigateTo("/teams");
+        }
+        else
+        {
+            // Delete failed
+            Console.WriteLine("An error occurred while deleting the team. Status Code: " + response.StatusCode);
+        }
+    }
+}

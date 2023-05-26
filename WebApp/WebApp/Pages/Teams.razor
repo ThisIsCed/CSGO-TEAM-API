@@ -1,0 +1,55 @@
+﻿@page "/"
+@page "/home"
+@page "/teams"
+<h1>All Teams</h1>
+
+@if (teams != null)
+{
+    <div class="grid-container">
+        @foreach (var team in teams)
+        {
+            <div>
+                <a href="teamdetail/@team.id" class="team-link" @onclick="() => NavigateToTeamDetail(team.id)">
+                    <img src="@team.url" alt="Team Image" width="50" height="50" />
+                    <span>@team.name</span>
+                </a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Loading teams...</p>
+}
+
+@code {
+    private List<Team> teams;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await httpClient.GetAsync("http://localhost:8888/teams");
+            if (response.IsSuccessStatusCode)
+            {
+                teams = await response.Content.ReadFromJsonAsync<List<Team>>();
+            }
+            else
+            {
+                teams = new List<Team>();
+                Console.WriteLine("An error occurred while retrieving teams. Status Code: " + response.StatusCode);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An error occurred while retrieving teams: " + ex.Message);
+            teams = new List<Team>();
+        }
+    }
+
+    private void NavigateToTeamDetail(string teamId)
+    {
+        NavigationManager.NavigateTo($"/TeamDetail/{teamId}");
+    }
+}
+

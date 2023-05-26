@@ -1,0 +1,65 @@
+﻿<div class="Grid1">
+	@if (teams != null)
+	{
+		<div class="grid-container">
+			@foreach (var team in teams)
+			{
+				<div>
+					<a href="teamdetail/@team.Name" class="team-link" @onclick="() => NavigateToDetail(team.Name)">
+						<img src="@team.Url" alt="Team Image" width="50" height="50" />
+						<span>@team.Name</span>
+					</a>
+				</div>
+			}
+		</div>
+	}
+	else
+	{
+		<p>Loading teams...</p>
+	}
+</div>
+
+@code {
+	private List<Team> teams;
+
+	protected override async Task OnInitializedAsync()
+	{
+		try
+		{
+			var response = await HttpClient.GetAsync("http://localhost:8888/teams");
+			if (response.IsSuccessStatusCode)
+			{
+				teams = await response.Content.ReadFromJsonAsync<List<Team>>();
+			}
+			else
+			{
+				Console.WriteLine("An error occurred while retrieving teams. Status Code: " + response.StatusCode);
+			}
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine("An error occurred while retrieving teams: " + ex.Message);
+		}
+	}
+
+	private void NavigateToDetail(string teamName)
+	{
+		NavigationManager.NavigateTo($"/teamdetail/{teamName}");
+	}
+}
+
+<style>
+	.grid-container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-gap: 10px;
+	}
+
+	.team-link {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-decoration: none;
+		color: inherit;
+	}
+</style>
