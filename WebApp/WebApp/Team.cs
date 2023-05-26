@@ -1,26 +1,24 @@
-﻿namespace PosProjekt
+﻿namespace WebApp
 {
     public class Team
     {
-    public string id { get; }
-    public string name { get; set; }
-    public string location { get; set; }
-    public string region { get; set; }
-    public string[] founders { get; set; }
-    public string[] players { get; set; }
-    public string url { get; set; }
-
-        public Team() { }
+        public string Id { get; }
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string Region { get; set; }
+        public string[] Founders { get; set; }
+        public string[] Players { get; set; }
+        public string Url { get; set; }
 
         public Team(string id, string name, string location, string region, string[] founders, string[] players, string url)
         {
-            this.id = id;
-            this.name = name;
-            this.location = location;
-            this.region = region;
-            this.founders = founders;
-            this.players = players;
-            this.url = url;
+            this.Id = id;
+            this.Name = name;
+            this.Location = location;
+            this.Region = region;
+            this.Founders = founders;
+            this.Players = players;
+            this.Url = url;
         }
     }
 }
