@@ -67,8 +67,8 @@ Die Web-App wurde mit dem Framework Blazor entwickelt, das von Microsoft stammt.
  - [Navbar.razor ](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/Navbar.razor)
  - [Searchbar.razor ](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/Searchbar.razor)
  ###	Liste an Pages
- - Index.razor [DeleteButton.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/DeleteButton.razor)
- - Details.razor [DeleteButton.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/DeleteButton.razor)
+ - [Index.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Pages/Index.razor)
+ - [Details.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Pages/Details.razor)
 
 ##	Postman
 Postman habe ich genutzt, um die funktionalität der API zu testen, als ich noch keine WPF-App bzw. Web-App hatte.
