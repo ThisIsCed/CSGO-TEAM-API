@@ -1,32 +1,56 @@
 ﻿@page "/teamdetail/{teamName}"
+
+<body>
 <Navbar></Navbar>
-
-<h1 class="page-title">Details</h1>
-
-@if (team != null)
-{
-    <div>
-        <h2>@team.Name</h2>
-        <div class="team-details">
+<div class="MainGrid">
+    <div class="team-details">
+        @if (team != null)
+        {
             <div class="team-attributes">
-                <p>Id: @team.Id</p>
-                <p>Location: @team.Location</p>
-                <p>Region: @team.Region</p>
-                <p>Founders/CEO: @string.Join(", ", team.Founders)</p>
-                <p>Players: @string.Join(", ", team.Players)</p>
+                <div>
+                    <h2><strong>Team Name:</strong> @team.Name</h2>
+                    <p><strong>Id:</strong> @team.Id</p>
+                </div>
+                <div>
+                    <p><strong>Location:</strong> @team.Location</p>
+                    <p><strong>Region:</strong> @team.Region</p>
+                </div>
+                <div>
+                    <p><strong>Founders:</strong></p>
+                    @if (team.Founders != null)
+                    {
+                        @foreach (var founder in team.Founders)
+                        {
+                            <p>@founder</p>
+                        }
+                    }
+                </div>
+                <div>
+                    <p><strong>Players:</strong></p>
+                    @if (team.Players != null)
+                    {
+                        @foreach (var player in team.Players)
+                        {
+                            <p>@player</p>
+                        }
+                    }
+                </div>
             </div>
-            <div class="team-logo">
-                <img src="@team.Url" alt="Team Logo" width="100" height="100" />
-            </div>
-        </div>
+        }
+        else
+        {
+            <p>Loading team details...</p>
+        }
     </div>
-    <DeleteButton></DeleteButton>
-}
-else
-{
-    <p>Loading team details...</p>
-}
-
+    <div class="team-logo">
+        @if (team != null)
+        {
+            <img src="@team.Url" alt="Team Logo" width="250" height="250" />
+        }
+    </div>
+</div>
+<DeleteButton></DeleteButton>
+</body>
 
 @code {
     [Parameter]
@@ -54,3 +78,19 @@ else
         }
     }
 }
+
+<style>
+    .MainGrid {
+        display: flex;
+    }
+
+    .team-details {
+        flex: 1;
+    }
+
+    .team-logo {
+        margin-left: 10px;
+        grid-column: 2;
+    }
+
+</style>

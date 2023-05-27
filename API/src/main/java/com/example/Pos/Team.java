@@ -9,7 +9,6 @@ import java.util.UUID;
 
 @Document(collection = "Teams")
 public class Team {
-    //Fehler konnte wegen @Field() keine Objecte löschen
     @Id
     private String id;
     @Field("name")

@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\WebApp",
-    "\\WebApp\\Components"
+    "\\WebApp\\Components",
+    "\\WebApp\\Pages"
   ],
-  "SelectedNode": "\\WebApp\\Program.cs",
+  "SelectedNode": "\\WebApp\\Components\\Navbar.razor",
   "PreviewInSolutionExplorer": false
 }

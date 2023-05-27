@@ -66,8 +66,8 @@ public class TeamController {
             existingTeam.setPlayers(updatedTeam.getPlayers());
             existingTeam.setUrl(updatedTeam.getUrl());
 
-            teamService.deleteTeam(name); // Delete the old team
-            teamService.saveTeam(existingTeam); // Save the new team
+            teamService.deleteTeam(name);
+            teamService.saveTeam(existingTeam);
 
             return new ResponseEntity<>("Team " + existingTeam.getName() + " has been updated.", HttpStatus.OK);
         } else {

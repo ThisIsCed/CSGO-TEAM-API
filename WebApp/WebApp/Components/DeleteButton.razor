@@ -1,27 +1,17 @@
-﻿<div class="Button" @onclick="DeleteTeam">
-	Delete
+﻿<div class="ButtonContainer">
+    <div class="Button" @onclick="DeleteTeam">
+        Delete
+    </div>
 </div>
-
-<style>
-	.Button{
-		background-color:#EDC6B2;
-		width: 100px;
-		height: 50px;
-		cursor: pointer;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-</style>
 
 @code {
     private Team team;
+
     private async Task DeleteTeam()
-    { 
-        var client = new HttpClient();
+    {
         var url = $"http://localhost:8888/del/team/{team.Name}";
 
-        var response = await client.DeleteAsync(url);
+        var response = await HttpClient.DeleteAsync(url);
 
         if (response.IsSuccessStatusCode)
         {
@@ -34,3 +24,23 @@
         }
     }
 }
+
+<style>
+    .ButtonContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .Button {
+        background-color: #EDC6B2;
+        width: 100px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+</style>
