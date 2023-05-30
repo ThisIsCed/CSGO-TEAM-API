@@ -1,58 +1,108 @@
 ﻿<div class="MainGrid">
-	@if (teams != null)
-	{
-		<div class="grid-container">
-			@foreach (var team in teams)
-			{
-				<div>
-					<a href="teamdetail/@team.Name" class="team-link" @onclick="() => NavigateToDetail(team.Name)">
-						<img src="@team.Url" alt="Team Image" width="50" height="50" />
-						<span>@team.Name</span>
-					</a>
-				</div>
-			}
-		</div>
-	}
-	else
-	{
-		<p>Loading teams...</p>
-	}
+    @if (teams != null)
+    {
+        <div class="grid-container">
+            @foreach (var team in teams)
+            {
+                <div>
+                    <a href="teamdetail/@team.Name" class="team-link" @onclick="() => NavigateToDetail(team.Name)">
+                        <img src="@team.Url" alt="Team Image" width="75" height="75" />
+                        <span>@team.Name</span>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>Loading teams...</p>
+    }
+</div>
+
+<!--kontrolliert status und je nach dem lädt es eine andere Farbe-->
+<div class="status-bar @(status == "Service is up" ? "service-up" : "service-down")">
+    <p>@status</p>
 </div>
 
 @code {
-	private List<Team> teams;
+    private List<Team> teams;
+    private string status;
 
-	protected override async Task OnInitializedAsync()
-	{
-		try
-		{
-			var response = await HttpClient.GetAsync("http://localhost:8888/teams");
-			if (response.IsSuccessStatusCode)
-			{
-				teams = await response.Content.ReadFromJsonAsync<List<Team>>();
-			}
-			else
-			{
-				Console.WriteLine("An error occurred while retrieving teams. Status Code: " + response.StatusCode);
-			}
-		}
-		catch (Exception ex)
-		{
-			Console.WriteLine("An error occurred while retrieving teams: " + ex.Message);
-		}
-	}
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await HttpClient.GetAsync("http://localhost:8888/teams");
+            if (response.IsSuccessStatusCode)
+            {
+                teams = await response.Content.ReadFromJsonAsync<List<Team>>();
+                UpdateStatus("Teams loaded successfully");
+            }
+            else
+            {
+                UpdateStatus("An error occurred while retrieving teams. Status Code: " + response.StatusCode);
+            }
+        }
+        catch (Exception ex)
+        {
+            UpdateStatus("An error occurred while retrieving teams: " + ex.Message);
+        }
 
-	private void NavigateToDetail(string teamName)
-	{
-		NavigationManager.NavigateTo($"/teamdetail/{teamName}");
-	}
+        await UpdateStatusPeriodically(TimeSpan.FromSeconds(5));
+    }
+
+    private void NavigateToDetail(string teamName)
+    {
+        NavigationManager.NavigateTo($"/teamdetail/{teamName}");
+    }
+
+    private async Task UpdateStatusPeriodically(TimeSpan interval)
+    {
+        while (true)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var response = await client.GetAsync("http://localhost:8888/");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        UpdateStatus("Service is up");
+                    }
+                    else
+                    {
+                        UpdateStatus("Service is down");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                UpdateStatus("Service is down");
+            }
+
+            StateHasChanged();
+
+            await Task.Delay(interval);
+        }
+    }
+
+    private void UpdateStatus(string newStatus)
+    {
+        status = newStatus;
+    }
 }
+
 
 <style>
 	.grid-container {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		grid-gap: 10px;
+		grid-gap: 12.5px;
+		padding:8px;
+		border:solid;
+		border-width:0.25px;
+        margin:-9.75px;
+        border-radius: 4px;
 	}
 
 	.team-link {
@@ -61,10 +111,25 @@
 		align-items: center;
 		text-decoration: none;
 		color: inherit;
+		padding: 8px;
 	}
 
 	.team-details {
 		flex: 1;
 	}
 
+    .status-bar{
+        font-size:15px;
+        padding:10px;
+        margin-top:75px;
+        border-radius: 4px;
+    }
+
+    .service-up {
+        background-color: #adf7b6;
+    }
+
+    .service-down {
+        background-color: #ffc09f;
+    }
 </style>

@@ -6,9 +6,6 @@ using System.Net.Http.Json;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Windows.Controls;
-using System.Timers;
-using System.Threading;
 using System.Windows.Threading;
 using System;
 
@@ -69,11 +66,11 @@ namespace Pos_Projekt
                 try
                 {
                     await client.DownloadStringTaskAsync(apiUrl);
-                    UpdateServerStatus("Server is up");
+                    UpdateServerStatus("Service is up");
                 }
                 catch (WebException)
                 {
-                    UpdateServerStatus("Server is down");
+                    UpdateServerStatus("Service is down");
                 }
             }
         }

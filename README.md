@@ -13,13 +13,13 @@ Die API besteht aus drei Klassen und einem Interface.
 
 Die Klassen sind:
 
--   Team
--   TeamService
--   TeamController
+-   [Team](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/API/src/main/java/com/example/Pos/Team.java)
+-   [TeamService](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/API/src/main/java/com/example/Pos/TeamService.java)
+-   [TeamController](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/API/src/main/java/com/example/Pos/TeamController.java)
 
 Das Interface ist:
 
--   TeamRepository
+-   [TeamRepository](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/API/src/main/java/com/example/Pos/TeamRepository.java)
 
 ### Team
 
@@ -97,10 +97,5 @@ API ->> WPF: Return Data
 In der Entwicklung habe ich mit der API begonnen, da diese als Grundstein für das Projekt fungiert. Danach habe ich mit MongoDB Compass eine neue Collection angelegt und in meiner application.propperties habe ich den Pfad zur Collection hinzugefügt, damit die API dort die Daten persistent speichert. Nach dem Anlegen der DB habe ich mit Postman die API auf Herz und Nieren durchgeprüft. Daraufhin habe ich mich an die WPF-Application gemacht und zum Schluss die Web-App.
 ```mermaid
 flowchart LR
-API:::apiclass --> Database[(Database)]:::dbclass--> Postman:::postman --> WPF:::wpfclass --> Web:::webclass
-classDef apiclass fill:#3993DD
-classDef dbclass fill:#97BFE3
-classDef postman fill:#F4EBE8
-classDef wpfclass fill:#8FE9DB
-classDef webclass fill:#29E7CD
+API --> Database[(Database)]--> Postman --> WPF --> Web
 ```
