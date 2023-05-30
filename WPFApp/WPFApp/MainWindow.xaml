@@ -38,7 +38,6 @@
                 <ListView x:Name="MyListView" Visibility="Collapsed" ItemsSource="{Binding Teams}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
                             <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
                             <GridViewColumn Header="Location" DisplayMemberBinding="{Binding location}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
                             <GridViewColumn Header="Region" DisplayMemberBinding="{Binding region}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
@@ -71,7 +70,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Label x:Name="serverStatus1" HorizontalAlignment="Left" VerticalAlignment="Bottom">Server is</Label>
+                <Label x:Name="serverStatus1" HorizontalAlignment="Left" VerticalAlignment="Bottom">Service is</Label>
             </StackPanel>
         </TabItem>
 
@@ -89,7 +88,7 @@
                     <Label Content="Founders/CEO (,)" HorizontalAlignment="Left" Width="110" Height="38"/>
                     <Label Content="Players (,)" HorizontalAlignment="Left" Width="80" Height="38"/>
                     <Label Content="Logo (Url)" HorizontalAlignment="Left" Width="80" Height="38"/>
-                    <Label x:Name="serverStatus2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom">Server is</Label>
+                    <Label x:Name="serverStatus2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom">Service is</Label>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Margin="3.75">
@@ -112,18 +111,16 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Margin="3.5">
-                    <Label Content="Id" HorizontalAlignment="Left" Width="75" Height="40" />
                     <Label Content="Name" HorizontalAlignment="Left" Width="75"  Height="40"/>
                     <Label Content="Location" HorizontalAlignment="Left" Width="75"  Height="38"/>
                     <Label Content="Region" HorizontalAlignment="Left" Width="75"  Height="38"/>
                     <Label Content="Founders/CEO (,)" HorizontalAlignment="Left" Width="110"  Height="35"/>
                     <Label Content="Players (,)" HorizontalAlignment="Left" Width="75"  Height="40"/>
                     <Label Content="Logo (Url)" HorizontalAlignment="Left" Width="75"  Height="35"/>
-                    <Label x:Name="serverStatus3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom">Server is</Label>
+                    <Label x:Name="serverStatus3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom">Service is</Label>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Margin="3.75">
-                    <TextBox Name="IdU" Margin="3.75" Height="30" FontSize="15"  TextAlignment="Left"/>
                     <TextBox Name="MyNameU" Margin="3.75" Height="30" FontSize="15" TextAlignment="Left"/>
                     <TextBox Name="MyLocationU" Margin="3.75" Height="30" FontSize="15" TextAlignment="Left"/>
                     <TextBox Name="MyRegionU" Margin="3.75" Height="30" FontSize="15" TextAlignment="Left"/>
@@ -144,7 +141,7 @@
 
                 <StackPanel Grid.Column="0" Margin="2.5">
                     <Label Content="Team Name" HorizontalAlignment="Left" Width="100" Height="30" FontSize="15"/>
-                    <Label x:Name="serverStatus4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0">Server is</Label>
+                    <Label x:Name="serverStatus4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="0">Service is</Label>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Margin="3.75">

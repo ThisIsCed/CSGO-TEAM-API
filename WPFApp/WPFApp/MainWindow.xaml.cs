@@ -136,7 +136,6 @@ namespace Pos_Projekt
 
         private async void UpdateTeam(object sender, RoutedEventArgs e)
         {
-            string id = IdU.Text;
             string name = MyNameU.Text;
             string location = MyLocationU.Text;
             string region = MyRegionU.Text;
@@ -146,7 +145,7 @@ namespace Pos_Projekt
 
             HttpClient client = new HttpClient();
 
-            Teams updatedTeam = new Teams(id,name, location, region, founders, players, url);
+            Teams updatedTeam = new Teams(name, location, region, founders, players, url);
 
             string json = JsonConvert.SerializeObject(updatedTeam);
 

@@ -17,9 +17,8 @@ namespace Pos_Projekt
             this.id = Guid.NewGuid().ToString();
         }
 
-        public Teams(string id,string name, string location, string region, string[] founders, string[] players, string url)
+        public Teams(string name, string location, string region, string[] founders, string[] players, string url)
         {
-            this.id = id;
             this.name = name;
             this.location = location;
             this.region = region;
