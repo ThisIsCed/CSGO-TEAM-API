@@ -74,7 +74,7 @@ So sieht meine Indexpage aus, wenn man die WebApp ausführt und der Service läu
 ![Index page](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/IndexPage.png)
 
 Falls der Service nicht läuft, sieht es wie folgt aus.
-![Detail page](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/Detail.png)
+![Detail page](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/IndexPagedown.png)
 
 Die Ansicht wenn man die Detailansicht für ein Team öffnet.
 ![Detail page](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/Detail.png)
