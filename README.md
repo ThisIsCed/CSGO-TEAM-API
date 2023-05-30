@@ -74,7 +74,7 @@ Die Web-App wurde mit dem Framework Blazor entwickelt, das von Microsoft stammt.
 Postman habe ich genutzt, um die funktionalität der API zu testen, als ich noch keine WPF-App bzw. Web-App hatte.
 | Reqeust | Url |Bedingung | Return | Status |
 |---------|-----|-----------|--------|-------|
-|GET|localhost:25052/|keine|The service is running| OK|
+|GET|localhost:8888/|keine|The service is running| OK|
 |GET|localhost:8888/teams|keine|Alle Teams|OK/No Content|
 |GET|localhost:8888/team/{name}|Name|Team|OK/Not Found|
 |POST|localhost:8888/add/team|Befüllter Body|Team Created/Fehler|Created/Internal Server Error|
