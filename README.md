@@ -70,8 +70,11 @@ Die Web-App wurde mit dem Framework Blazor entwickelt, das von Microsoft stammt.
  - [Index.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Pages/Index.razor)
  - [Details.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Pages/Details.razor)
 ### Vorschau
-So sieht meine Indexpage aus, wenn man die WebApp ausführt.
+So sieht meine Indexpage aus, wenn man die WebApp ausführt und der Service läuft.
 ![Index page](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/IndexPage.png)
+
+Falls der Service nicht läuft, sieht es wie folgt aus.
+![Detail page](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/Detail.png)
 
 Die Ansicht wenn man die Detailansicht für ein Team öffnet.
 ![Detail page](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/Detail.png)
