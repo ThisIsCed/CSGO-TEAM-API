@@ -15,7 +15,7 @@
     }
     else
     {
-        <p>Loading teams...</p>
+        <p>@teamsLoadingMessage</p>
     }
 </div>
 
@@ -27,28 +27,37 @@
 @code {
     private List<Team> teams;
     private string status;
+    private string teamsLoadingMessage;
 
     protected override async Task OnInitializedAsync()
     {
+        await LoadTeamsAndStatus();
+        await UpdateStatusPeriodically(TimeSpan.FromSeconds(2.5));
+    }
+
+    private async Task LoadTeamsAndStatus()
+    {
+        teamsLoadingMessage = "Teams loading...";
         try
         {
             var response = await HttpClient.GetAsync("http://localhost:8888/teams");
             if (response.IsSuccessStatusCode)
             {
                 teams = await response.Content.ReadFromJsonAsync<List<Team>>();
-                UpdateStatus("Teams loaded successfully");
+                UpdateStatus("Service is up");
+                teamsLoadingMessage = "";
             }
             else
             {
-                UpdateStatus("An error occurred while retrieving teams. Status Code: " + response.StatusCode);
+                teamsLoadingMessage = "Teams couldn't be loaded";
+                UpdateStatus("Service is down");
             }
         }
         catch (Exception ex)
         {
-            UpdateStatus("An error occurred while retrieving teams: " + ex.Message);
+            teamsLoadingMessage = "Teams couldn't be loaded";
+            UpdateStatus("Service is down");
         }
-
-        await UpdateStatusPeriodically(TimeSpan.FromSeconds(5));
     }
 
     private void NavigateToDetail(string teamName)
@@ -64,8 +73,8 @@
             {
                 using (var client = new HttpClient())
                 {
-                    var response = await client.GetAsync("http://localhost:8888/");
-                    if (response.IsSuccessStatusCode)
+                    var statusResponse = await client.GetAsync("http://localhost:8888/");
+                    if (statusResponse.IsSuccessStatusCode)
                     {
                         UpdateStatus("Service is up");
                     }
@@ -74,9 +83,12 @@
                         UpdateStatus("Service is down");
                     }
                 }
+
+                await LoadTeamsAndStatus();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                teamsLoadingMessage = "Teams couldn't be loaded";
                 UpdateStatus("Service is down");
             }
 
@@ -94,42 +106,35 @@
 
 
 <style>
-	.grid-container {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-gap: 12.5px;
-		padding:8px;
-		border:solid;
-		border-width:0.25px;
-        margin:-9.75px;
-        border-radius: 4px;
-	}
+    .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 12.5px;
+    padding: 4px;
+    border: solid;
+    border-width: 0.25px;
+    margin-top: 3%;
+    border-radius: 4px;
+}
 
-	.team-link {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-decoration: none;
-		color: inherit;
-		padding: 8px;
-	}
+.team-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 8px;
+}
 
-	.team-details {
-		flex: 1;
-	}
+.team-details {
+    flex: 1;
+}
 
-    .status-bar{
-        font-size:15px;
-        padding:10px;
-        margin-top:75px;
-        border-radius: 4px;
-    }
-
-    .service-up {
-        background-color: #adf7b6;
-    }
-
-    .service-down {
-        background-color: #ffc09f;
-    }
+.status-bar {
+    font-size: 15px;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 8px;
+    background: -moz-linear-gradient(left, #F2779A, #FF6F5F, #F9826C);
+}
 </style>

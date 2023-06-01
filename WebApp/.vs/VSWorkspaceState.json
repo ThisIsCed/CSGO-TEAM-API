@@ -3,8 +3,10 @@
     "",
     "\\WebApp",
     "\\WebApp\\Components",
-    "\\WebApp\\Pages"
+    "\\WebApp\\Pages",
+    "\\WebApp\\wwwroot",
+    "\\WebApp\\wwwroot\\css"
   ],
-  "SelectedNode": "\\WebApp\\Components\\Navbar.razor",
+  "SelectedNode": "\\WebApp\\wwwroot\\css\\MainGrid.css",
   "PreviewInSolutionExplorer": false
 }
