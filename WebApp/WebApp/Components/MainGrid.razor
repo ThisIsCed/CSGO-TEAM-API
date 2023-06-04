@@ -4,7 +4,7 @@
         <div class="grid-container">
             @foreach (var team in teams)
             {
-                <div>
+                <div class="team-card">
                     <a href="teamdetail/@team.Name" class="team-link" @onclick="() => NavigateToDetail(team.Name)">
                         <img src="@team.Url" alt="Team Image" width="75" height="75" />
                         <span>@team.Name</span>
@@ -19,7 +19,6 @@
     }
 </div>
 
-<!--kontrolliert status und je nach dem lädt es eine andere Farbe-->
 <div class="status-bar @(status == "Service is up" ? "service-up" : "service-down")">
     <p>@status</p>
 </div>
@@ -104,37 +103,52 @@
     }
 }
 
-
 <style>
     .grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 12.5px;
-    padding: 4px;
-    border: solid;
-    border-width: 0.25px;
-    margin-top: 3%;
-    border-radius: 4px;
-}
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 12.5px;
+        padding: 4px;
+        margin-top: 3%;
+    }
 
-.team-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    padding: 8px;
-}
+    .team-card {
+        background-color: #FFE5CA;
+        padding: 8px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-.team-details {
-    flex: 1;
-}
+        .team-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-.status-bar {
-    font-size: 15px;
-    padding: 12px;
-    margin: 10px;
-    border-radius: 8px;
-    background: -moz-linear-gradient(left, #F2779A, #FF6F5F, #F9826C);
-}
+    .team-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        padding: 8px;
+    }
+
+    .team-details {
+        flex: 1;
+    }
+
+    .status-bar {
+        font-size: 15px;
+        padding: 12px;
+        margin: 10px;
+        border-radius: 8px;
+        background: -moz-linear-gradient(left, #FA9884,#E74646);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 </style>

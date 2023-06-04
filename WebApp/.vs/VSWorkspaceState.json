@@ -4,9 +4,10 @@
     "\\WebApp",
     "\\WebApp\\Components",
     "\\WebApp\\Pages",
+    "\\WebApp\\Shared",
     "\\WebApp\\wwwroot",
     "\\WebApp\\wwwroot\\css"
   ],
-  "SelectedNode": "\\WebApp\\wwwroot\\css\\MainGrid.css",
+  "SelectedNode": "\\WebApp\\wwwroot\\Github.png",
   "PreviewInSolutionExplorer": false
 }
