@@ -80,9 +80,9 @@ Und es gibt auch die Möglichkeit, ein Team zu löschen:
 ##	Web App
 Die Web-App wurde mit dem Framework Blazor entwickelt, das von Microsoft stammt. In meinem Blazor-Projekt gibt es auch eine "Team.cs"-Datei mit den gleichen Eigenschaften wie in der WPF-App. Insgesamt gibt es zwei Seiten: "Index" und "Details.razor". Die "Index.razor" ist meine Standardseite, auf die man weitergeleitet wird, sobald man die Web-App startet. Dort befindet sich eine Suchleiste, in der man gezielt nach einem Team suchen kann. Zusätzlich erhält man eine Übersicht über alle Teams, die in der Datenbank gespeichert sind, in Form von Namen und Logo. Man kann auf den Namen oder das Logo klicken, um zur Detailseite des Teams weitergeleitet zu werden. Dort kann man alle Attribute des Teams einsehen. Für die Gestaltung benutze ich .razor-Komponenten, in denen ich den HTML-, CSS- und C#-Code für die jeweiligen Komponenten schreibe.
 ###	Liste an Komponenten
- - [MainGrid.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/MainGrid.razor)
- - [Navbar.razor ](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/Navbar.razor)
- - [Searchbar.razor ](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/Searchbar.razor)
+ - [MainGrid.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Web_App/Web_App/Components/MainGrid.razor)
+ - [Navbar.razor ](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Web_App/Web_App/Components/NavBar.razor)
+ - [Searchbar.razor ](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Web_App/Web_App/Components/SearchBar.razor)
  ###	Liste an Pages
  - [Index.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Web_App/Web_App/Pages/Index.razor)
  - [Detail.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Web_App/Web_App/Pages/Detail.razor)
