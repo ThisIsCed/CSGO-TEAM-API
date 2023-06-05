@@ -80,7 +80,6 @@ Und es gibt auch die Möglichkeit, ein Team zu löschen:
 ##	Web App
 Die Web-App wurde mit dem Framework Blazor entwickelt, das von Microsoft stammt. In meinem Blazor-Projekt gibt es auch eine "Team.cs"-Datei mit den gleichen Eigenschaften wie in der WPF-App. Insgesamt gibt es zwei Seiten: "Index" und "Details.razor". Die "Index.razor" ist meine Standardseite, auf die man weitergeleitet wird, sobald man die Web-App startet. Dort befindet sich eine Suchleiste, in der man gezielt nach einem Team suchen kann. Zusätzlich erhält man eine Übersicht über alle Teams, die in der Datenbank gespeichert sind, in Form von Namen und Logo. Man kann auf den Namen oder das Logo klicken, um zur Detailseite des Teams weitergeleitet zu werden. Dort kann man alle Attribute des Teams einsehen, und es gibt auch einen "Delete"-Button, falls man das Team löschen möchte. Für die Gestaltung benutze ich .razor-Komponenten, in denen ich den HTML-, CSS- und C#-Code für die jeweiligen Komponenten schreibe.
 ###	Liste an Komponenten
- - [DeleteButton.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/DeleteButton.razor)
  - [MainGrid.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/MainGrid.razor)
  - [Navbar.razor ](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/Navbar.razor)
  - [Searchbar.razor ](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Components/Searchbar.razor)
@@ -89,7 +88,7 @@ Die Web-App wurde mit dem Framework Blazor entwickelt, das von Microsoft stammt.
  - [Details.razor](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/WebApp/WebApp/Pages/Details.razor)
 ### Vorschau
 So sieht meine Indexpage aus, wenn man die WebApp ausführt und der Service läuft.
-![Index-Seite - Service verfügbar - Web](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/IndexPage.png)
+![Index-Seite - Service verfügbar - Web](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/Index_service_up.png)
 Falls der Service nicht läuft, sieht es wie folgt aus.
 ![Index-Seite - Service nicht verfügbar - Web](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/IndexPagedown.png)
 Die Ansicht wenn man die Detailansicht für ein Team öffnet.
