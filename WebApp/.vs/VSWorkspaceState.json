@@ -1,13 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\WebApp",
-    "\\WebApp\\Components",
-    "\\WebApp\\Pages",
-    "\\WebApp\\Shared",
-    "\\WebApp\\wwwroot",
-    "\\WebApp\\wwwroot\\css"
+    "\\WEBApp",
+    "\\WEBApp\\Components",
+    "\\WEBApp\\Pages"
   ],
-  "SelectedNode": "\\WebApp\\Pages\\Details.razor",
+  "SelectedNode": "\\WEBApp\\_Imports.razor",
   "PreviewInSolutionExplorer": false
 }
