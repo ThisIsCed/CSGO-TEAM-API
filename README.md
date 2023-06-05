@@ -93,7 +93,7 @@ Falls der Service nicht läuft, sieht es wie folgt aus.
 ![Index-Seite - Service nicht verfügbar - Web](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/IndexPagedown.png)
 Die Ansicht wenn man die Detailansicht für ein Team öffnet.
 ![Detailseite - Web](https://github.com/ThisIsCed/CSGO-TEAM-API/blob/main/Bilder/Detail.png)
-> **Hinweis:** In der Web-Anwendung kann man Teams nur suchen und löschen.
+> **Hinweis:** In der Web-Anwendung kann man Teams nur suchen.
 ##	Postman
 Postman habe ich genutzt, um die funktionalität der API zu testen, als ich noch keine WPF-App bzw. Web-App hatte.
 | Reqeust | Url |Bedingung | Return | Status |
