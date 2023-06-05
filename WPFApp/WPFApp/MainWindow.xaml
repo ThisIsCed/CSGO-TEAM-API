@@ -35,43 +35,41 @@
                 </Grid>
                 <TextBox x:Name="Enterd" Width="745" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" FontSize="15" Margin="10,0,10,10"/>
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView x:Name="MyListView" Visibility="Collapsed" ItemsSource="{Binding Teams}" Height="600">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
-                                <GridViewColumn Header="Location" DisplayMemberBinding="{Binding location}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
-                                <GridViewColumn Header="Region" DisplayMemberBinding="{Binding region}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
-                                <GridViewColumn Header="Founders" Width="Auto">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding founders}">
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding}" TextAlignment="Left" Margin="2.5"/>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Players" Width="Auto">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding players}">
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding}" TextAlignment="Left" Margin="2.5"/>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </ScrollViewer>
+                <ListView x:Name="MyListView" Visibility="Collapsed" ItemsSource="{Binding Teams}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
+                            <GridViewColumn Header="Location" DisplayMemberBinding="{Binding location}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
+                            <GridViewColumn Header="Region" DisplayMemberBinding="{Binding region}" Width="Auto" CellTemplate="{StaticResource CenteredCellTemplate}"/>
+                            <GridViewColumn Header="Founders" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding founders}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" TextAlignment="Left" Margin="2.5"/>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Players" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding players}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" TextAlignment="Left" Margin="2.5"/>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
                 <Label x:Name="serverStatus1" HorizontalAlignment="Left" VerticalAlignment="Bottom">Service is</Label>
             </StackPanel>
         </TabItem>

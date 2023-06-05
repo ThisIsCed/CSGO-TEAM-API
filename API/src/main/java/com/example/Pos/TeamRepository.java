@@ -8,5 +8,4 @@ import java.util.Optional;
 @Repository
 public interface TeamRepository extends MongoRepository<Team, String> {
     Optional<Team> findByName(String name);
-    void deleteByName(String name);
 }
