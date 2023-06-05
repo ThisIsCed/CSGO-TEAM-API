@@ -8,6 +8,6 @@
     "\\WebApp\\wwwroot",
     "\\WebApp\\wwwroot\\css"
   ],
-  "SelectedNode": "\\WebApp\\wwwroot\\Github.png",
+  "SelectedNode": "\\WebApp\\Components\\DeleteButton.razor",
   "PreviewInSolutionExplorer": false
 }

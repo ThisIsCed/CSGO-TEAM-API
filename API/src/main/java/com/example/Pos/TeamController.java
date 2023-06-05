@@ -77,7 +77,7 @@ public class TeamController {
 
     @DeleteMapping("/del/team/{name}")
     public ResponseEntity<String> deleteTeam(@PathVariable String name) {
-        Optional<Team> optionalTeam = teamRepository.findById(name);
+        Optional<Team> optionalTeam = teamRepository.findByName(name);
         if(optionalTeam.isPresent()) {
             teamService.deleteTeam(name);
             return new ResponseEntity<>("Team has been deleted", HttpStatus.OK);

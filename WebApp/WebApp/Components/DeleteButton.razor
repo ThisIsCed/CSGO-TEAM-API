@@ -1,22 +1,31 @@
 ﻿<div class="ButtonContainer">
-    <div class="Button" @onclick="DeleteTeam">
+    <div class="Button" @onclick="DeleteTeam" disabled="@(team == null)">
         Delete
     </div>
 </div>
 
 @code {
-    private Team team;
+    [Parameter]
+    public Team team { get; set; }
 
     private async Task DeleteTeam()
     {
-        var url = $"http://localhost:8888/del/team/{team.Name}";
+        if (team == null)
+        {
+            Console.WriteLine("Team is null.");
+            return;
+        }
 
-        var response = await HttpClient.DeleteAsync(url);
+        var response = await HttpClient.DeleteAsync("http://localhost:8888/del/team/" + team.Name);
 
         if (response.IsSuccessStatusCode)
         {
             Console.WriteLine("Team deleted.");
             NavigationManager.NavigateTo("/");
+        }
+        else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+        {
+            Console.WriteLine("Team not found.");
         }
         else
         {

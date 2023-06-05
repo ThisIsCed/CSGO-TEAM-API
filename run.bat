@@ -1,0 +1,1 @@
+java -cp "CSGO-TEAM-API\API\src\main\java\com\example\Pos" PosProjektApplication.java

@@ -24,5 +24,5 @@ public class TeamService {
         this.repository.save(team);
     }
 
-    public void deleteTeam(String name){this.repository.deleteById(name);}
+    public void deleteTeam(String name){this.repository.deleteByName(name);}
 }
