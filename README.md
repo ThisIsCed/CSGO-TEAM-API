@@ -138,9 +138,9 @@ loop Every few seconds
 Web->> API: Ask if Service is up
 opt
 API -->> Web: Service is up
-API -> DB: Pulls Data
-DB -> API: Sends Data
-API -> Web: Returns Data
+API ->> DB: Pulls Data
+DB ->> API: Sends Data
+API ->> Web: Returns Data
 end
 alt
 API -->> Web: No respons
