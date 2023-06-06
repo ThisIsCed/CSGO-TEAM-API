@@ -112,8 +112,8 @@ Das Diagramm, das unterbei dargestellt ist, dient zur Veranschaung der Requests.
 ```mermaid
 sequenceDiagram
 WPF->> API: Sends reqeust
-API->> DB: Pulls Data
-DB ->> API: Sends all Teams
+API->> DB: Aks for Data
+DB ->> API: Sends all Data
 API -->> WPF: Returns Status
 API ->> WPF: Return Data
 ```
