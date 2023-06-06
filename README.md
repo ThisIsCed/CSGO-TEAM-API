@@ -113,12 +113,12 @@ Das Diagramm, das unterbei dargestellt ist, dient zur Veranschaung der Requests.
 sequenceDiagram
 WPF->> API: Sends reqeust
 API->> DB: Aks for Data
-DB ->> API: Sends all Data
+DB ->> API: Sends Data
 API -->> WPF: Returns Status
 API ->> WPF: Return Data
 ```
 
-### Loop
+### Loop for WPF
 ```mermaid
 sequenceDiagram
 loop Every few seconds
@@ -131,6 +131,23 @@ API -->> WPF: No respons
 end
 end
 ```
+### Loop for Web App
+```mermaid
+sequenceDiagram
+loop Every few seconds
+Web->> API: Ask if Service is up
+opt
+API -->> Web: Service is up
+API -> DB: Pulls Data
+DB -> API: Sends Data
+API -> Web: Returns Data
+end
+alt
+API -->> Web: No respons
+end
+end
+```
+
 ###	Entwicklungsverlauf
 In der Entwicklung habe ich mit der API begonnen, da diese als Grundstein für das Projekt fungiert. Danach habe ich mit MongoDB Compass eine neue Collection angelegt und in meiner application.propperties habe ich den Pfad zur Collection hinzugefügt, damit die API dort die Daten persistent speichert. Nach dem Anlegen der DB habe ich mit Postman die API auf Herz und Nieren durchgeprüft. Daraufhin habe ich mich an die WPF-Application gemacht und zum Schluss die Web-App.
 ```mermaid

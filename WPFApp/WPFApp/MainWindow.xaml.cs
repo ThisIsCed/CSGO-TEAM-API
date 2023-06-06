@@ -165,6 +165,12 @@ namespace Pos_Projekt
             {
                 MessageBox.Show("An error occurred while updating the team.");
             }
+            MyNameU.Text = "";
+            MyLocationU.Text = "";
+            MyRegionU.Text = "";
+            MyFoundersU.Text = "";
+            MyPlayersU.Text = "";
+            MyUrlU.Text = "";
         }
 
         private async void DeleteTeam(object sender, RoutedEventArgs e)
