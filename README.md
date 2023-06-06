@@ -118,6 +118,7 @@ API -->> WPF: Returns Status
 API ->> WPF: Return Data
 ```
 
+### Loop
 ```mermaid
 sequenceDiagram
 loop Every few seconds
