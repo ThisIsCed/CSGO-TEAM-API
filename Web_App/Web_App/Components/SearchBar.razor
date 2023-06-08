@@ -1,0 +1,82 @@
+﻿<div class="Searchbar">
+	<div class="search-input-container">
+		<input type="text" class="search-input" @bind="searchText" placeholder="Search..." />
+		<button type="button" class="search-button" @onclick="Search">Search</button>
+	</div>
+</div>
+
+@code {
+	private string searchText;
+
+	private async Task Search()
+	{
+		var apiUrl = $"http://localhost:8888/team/{searchText}";
+
+		var response = await HttpClient.GetAsync(apiUrl);
+		if (response.IsSuccessStatusCode)
+		{
+			var json = await response.Content.ReadAsStringAsync();
+			var team = JsonConvert.DeserializeObject<Team>(json);
+
+			NavigationManager.NavigateTo($"/teamdetail/{searchText}");
+		}
+		else if (response.StatusCode == HttpStatusCode.NotFound)
+		{
+			Console.WriteLine("An error occurred while retrieving the team. Status Code: " + response.StatusCode);
+		}
+	}
+}
+
+
+<style>
+	.search-bar {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 20px;
+		border-radius: 4px;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	#searchQueryInput {
+		width: 100%;
+		height: 2.8rem;
+		outline: none;
+		border: none;
+		border-radius: 1.625rem;
+		padding: 0 3.5rem 0 1.5rem;
+		font-size: 1rem;
+	}
+
+	.search-input-container {
+		display: flex;
+		align-items: center;
+		border-radius: 4px;
+		overflow: hidden;
+		width: 400px;
+		margin: 0 auto;
+	}
+
+	.search-input {
+		flex: 1;
+		padding: 10px;
+		margin: -2.5px;
+		font-size: 16px;
+		border: hidden;
+		background-color: #FFE5CA;
+	}
+
+	.search-button {
+		padding: 10px 16px;
+		background: -moz-linear-gradient(left,#FA9884, #E74646);
+		border: hidden;
+		cursor: pointer;
+		border-radius: 4px;
+	}
+
+		.search-button:hover {
+			transition-property: filter;
+			transition-duration: 0.33s;
+			filter: invert(100%);
+		}
+</style>
